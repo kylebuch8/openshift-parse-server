@@ -10,8 +10,8 @@ var databaseUri = process.env.MONGODB_URL || 'mongodb://localhost:27017/';
 var api = new ParseServer({
     databaseURI: databaseUri + 'dev',
     cloud: __dirname + '/cloud/main.js',
-    appId: 'myAppId',
-    masterKey: 'mySecretMasterKey',
+    appId: process.env.PARSE_APP_ID || 'myAppId',
+    masterKey: process.env.PARSE_MASTER_KEY || 'mySecretMasterKey'
 });
 
 app.use('/parse', api);
