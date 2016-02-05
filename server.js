@@ -5,10 +5,10 @@ var app = express();
 var ParseServer = require('parse-server').ParseServer;
 var host = process.env.OPENSHIFT_NODEJS_IP || 'localhost';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
-var databaseUri = process.env.MONGODB_URL || 'mongodb://localhost:27017';
+var databaseUri = process.env.MONGODB_URL || 'mongodb://localhost:27017/';
 
 var api = new ParseServer({
-    databaseURI: databaseUri + '/dev',
+    databaseURI: databaseUri + 'dev',
     cloud: __dirname + '/cloud/main.js',
     appId: 'myAppId',
     masterKey: 'mySecretMasterKey',
