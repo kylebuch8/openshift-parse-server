@@ -11,7 +11,8 @@ var api = new ParseServer({
     databaseURI: databaseUri,
     cloud: __dirname + '/cloud/main.js',
     appId: process.env.PARSE_APP_ID || 'myAppId',
-    masterKey: process.env.PARSE_MASTER_KEY || 'mySecretMasterKey'
+    masterKey: process.env.PARSE_MASTER_KEY || 'mySecretMasterKey',
+    serverURL: 'http://localhost:1337/parse'
 });
 
 app.use('/parse', api);
