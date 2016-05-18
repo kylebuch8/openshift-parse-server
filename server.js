@@ -5,13 +5,14 @@ var app = express();
 var ParseServer = require('parse-server').ParseServer;
 var host = process.env.OPENSHIFT_NODEJS_IP || 'localhost';
 var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
-var databaseUri = process.env.MONGODB_URL || 'mongodb://localhost:27017/';
+var databaseUri = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost:27017/';
 
 var api = new ParseServer({
-    databaseURI: databaseUri + 'dev',
+    databaseURI: databaseUri,
     cloud: __dirname + '/cloud/main.js',
     appId: process.env.PARSE_APP_ID || 'myAppId',
-    masterKey: process.env.PARSE_MASTER_KEY || 'mySecretMasterKey'
+    masterKey: process.env.PARSE_MASTER_KEY || 'mySecretMasterKey',
+    serverURL: 'http://localhost:1337/parse'
 });
 
 app.use('/parse', api);
